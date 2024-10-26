@@ -1,0 +1,26 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.principalDiv {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.smurfDiv {
+  background: linear-gradient(to top, #7ec850, #87ceeb);
+  border-radius: 12px;
+  margin: 20px;
+  width: 30%;
+  border: 1px solid black;
+  text-align: center;
+  padding: 12px;
+}
+
+img{
+  width: 100%;
+}
