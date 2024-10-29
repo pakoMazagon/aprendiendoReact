@@ -1,26 +1,61 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*height: 100vh;*/
+}
+
+h1 {
   text-align: center;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .principalDiv {
   display: flex;
-  justify-content: space-evenly;
-  text-align: center;
+  flex-wrap: wrap; /* Permite que las tarjetas bajen a la siguiente fila si no caben */
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
 }
 
 .smurfDiv {
-  background: linear-gradient(to top, #7ec850, #87ceeb);
+  /*background: linear-gradient(to top, #7ec850, #87ceeb);*/
   border-radius: 12px;
-  margin: 20px;
-  width: 30%;
-  border: 1px solid black;
+  width: 150px; /* Ancho fijo para asegurar consistencia */
+  min-height: 200px; /* Altura mínima para que no cambie con/ sin imagen */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 12px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-img{
+img, .placeholder-img {
+  max-width: 100%; /* Controla el ancho para que nunca exceda el contenedor */
+  max-height: 100px; /* Controla la altura de la imagen */
+  object-fit: cover; /* Ajusta la imagen al tamaño sin distorsionar */
+}
+
+.placeholder-img {
   width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ccc;
+  font-size: 2rem;
+  color: white;
+  display: flex;
+  flex-direction: column;  
+  max-width: 100%; /* Controla el ancho para que nunca exceda el contenedor */
+  max-height: 100px; /* Controla la altura de la imagen */
+  object-fit: cover; /* Ajusta la imagen al tamaño sin distorsionar */
 }
