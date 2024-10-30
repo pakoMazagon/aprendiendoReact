@@ -76,7 +76,7 @@ function App() {
             card.id === first || card.id === second ? { ...card, isEnable: true } : card
           )
         );
-        setMatchedCards((card) => [...matchedCards, selectedCards]);        
+        setMatchedCards(() => [...matchedCards, selectedCards]);        
       } else {
         console.log('Las cartas no coinciden, ocúltalas nuevamente después de un retraso')
         handleAudio(errorSound);
