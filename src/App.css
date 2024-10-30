@@ -26,6 +26,7 @@ h1 {
 .smurfDiv {
   /*background: linear-gradient(to top, #7ec850, #87ceeb);*/
   border-radius: 12px;
+  position: relative;
   width: 150px; /* Ancho fijo para asegurar consistencia */
   min-height: 200px; /* Altura mínima para que no cambie con/ sin imagen */
   padding: 10px;
@@ -36,6 +37,70 @@ h1 {
   text-align: center;
   box-sizing: border-box;
   overflow: hidden;
+  transform-style: preserve-3d; /* Activar 3D para flip */
+  transition: transform 0.6s; /* Duración del flip */
+  cursor: pointer; /*sombreado cuando clickas en el*/
+}
+
+/* Estilos para la animación de giro */
+.smurfDiv.is-flipped {
+  transform: rotateY(360deg); /* Gira 180 grados */
+}
+
+.smurfDiv .front, .smurfDiv .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.smurfDiv .back {
+  transform: rotateY(180deg); /* La cara trasera se muestra con el giro */
+}
+
+/* Efecto de parpadeo para cartas seleccionables */
+.selectable {
+  animation: blink 1s infinite alternate;
+  border: 2px dashed #ffc107;
+}
+
+/* Animación de coincidencia para cartas iguales */
+.matched {
+  animation: match-found 0.5s ease-out;
+  background-color: #28a745;
+  color: white;
+}
+
+/* Parpadeo para cartas seleccionables */
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+/* Efecto de coincidencia */
+@keyframes match-found {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Media queries para hacer responsive el diseño */
+@media (max-width: 768px) {
+  .smurfDiv {
+    width: 120px;
+    height: 160px;
+  }
+
+  .principalDiv {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
 }
 
 img, .placeholder-img {

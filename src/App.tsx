@@ -6,6 +6,9 @@ import azraelImg from './assets/images/Azrael.png'
 import Smurf from './components/Smurf.tsx'
 import { v4 as uuidv4 } from 'uuid'
 import './App.css'
+import successSound from './assets/sounds/success.wav';
+import errorSound from './assets/sounds/failed.wav';
+import completedSound from './assets/sounds/completed.wav';
 
 function shuffleArray(array: any[]): any[] {
   return array
@@ -14,9 +17,15 @@ function shuffleArray(array: any[]): any[] {
     .map(({ sort, ...value }) => value);
 }
 
+const handleAudio = (soundFile: string) => {
+  const audio = new Audio(soundFile);
+  audio.play();
+};
+
 
 
 function App() {  
+  
   const initialSmurfs:any[] = 
             [
               {id:uuidv4(),name:'Gruñon',image:gruñonImg, isEnable:false, color:'red'},
@@ -30,10 +39,12 @@ function App() {
   );
 
   const [selectedCards, setSelectedCards] = useState<any>([]);
+  const [matchedCards, setMatchedCards] = useState<string[]>([]);
 
   const handleCardClick = (id:any) => {
-    console.log('handleCardClick fuera:'+id+',selectedCards:'+selectedCards);
-    if (selectedCards.length < 2) {
+    console.log('handleCardClick fuera:'+id+',selectedCards:'+selectedCards+',cards[id]:'+cards);
+    const cardSelected = cards.filter(card => card.id === id);
+    if (selectedCards.length < 2 && !cardSelected[0].isEnable) {
       setSelectedCards([...selectedCards, id]);
       setCards(cards =>
         cards.map(card =>
@@ -45,7 +56,11 @@ function App() {
   };
 
   useEffect(() => {
-    console.log('useEffect fuera'+selectedCards);
+    console.log('useEffect fuera'+matchedCards.length);
+    console.log('useEffect fuera2'+cards.length);
+    if(matchedCards.length*2 === cards.length){
+      handleAudio(completedSound);
+    }
     if (selectedCards.length === 2) {
       console.log('useEffect dentro:'+selectedCards);
       const [first, second] = selectedCards;
@@ -55,13 +70,16 @@ function App() {
       if (firstCard && secondCard && firstCard.name === secondCard.name) {
         // Las cartas coinciden, mantén reveladas ambas
         console.log('Las cartas coinciden, mantén reveladas ambas');
+        handleAudio(successSound);
         setCards(cards =>
           cards.map(card =>
             card.id === first || card.id === second ? { ...card, isEnable: true } : card
           )
         );
+        setMatchedCards((card) => [...matchedCards, selectedCards]);        
       } else {
         console.log('Las cartas no coinciden, ocúltalas nuevamente después de un retraso')
+        handleAudio(errorSound);
         // Las cartas no coinciden, ocúltalas nuevamente después de un retraso
         setTimeout(() => {
           setCards(cards =>
@@ -86,7 +104,8 @@ function App() {
       <h1>Los Pitufos</h1>
       <div className='principalDiv'>  
         {cards.map(card =>{
-          return <Smurf key={uuidv4()} id={card.id} name={card.name} image={card.image} color={card.color} isEnable={card.isEnable} onClick={()=>handleCardClick(card.id)}/>
+          return <Smurf key={uuidv4()} id={card.id} name={card.name} image={card.image} color={card.color} isEnable={card.isEnable} onClick={()=>handleCardClick(card.id)}
+                  matched={matchedCards.includes(card.id)}/>
         })}
       </div>
 
