@@ -11,16 +11,11 @@
   text-align: center;
 }
 
-.smurfDiv {
-  background: linear-gradient(to top, #7ec850, #87ceeb);
-  border-radius: 12px;
-  margin: 20px;
-  width: 30%;
-  border: 1px solid black;
-  text-align: center;
-  padding: 12px;
+.languages{
+  display: flex;
+  justify-content: center;  
 }
 
-img{
-  width: 100%;
+.banderaCSS{
+  margin: 2vh;
 }

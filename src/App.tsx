@@ -1,65 +1,50 @@
 import { useRef, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import gruñonImg from './assets/images/Gruñon.png'
-import filosofoImg from './assets/images/Filosofo.png'
-import fortachonImg from './assets/images/Fortachon.png'
-import pitufinaImg from './assets/images/Pitufina.png'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { DataContext } from './Context'
+import Language from './Languages'
+import Languages from './Languages'
 
-interface SmurfProps {
-  name: string;
-  image: string;
-}
 
-const Smurf: React.FC<SmurfProps> = ({name, image}) => {
-  return (
-    <div>
-      <h2>{name}</h2>
-      <img src={image} alt={name} />
-    </div>
-  );
-}
+const valores=[{
+  titulo:"Aprenda React intensivamente con una profesora nativa",
+  texto:"2 semanas. Una profesora sólo para ti (12h/día)",
+  boton1:"Profesora",
+  foto:"marta.PNG",
+  nombre:"Marta Ríos",
+  boton2:"Lugar",
+  direccion:"48 St Laurent Boulevard, Montreal, Canadá"
+},{
+  titulo:"Learn React intensively with a native teacher",
+  texto:"2 weeks. A teacher just for you (12h/day)",
+  boton1:"Professor",
+  nombre:"Grace Trembley",
+  foto:"grace.PNG",
+  boton2:"Lotacion",
+  direccion:"65 Stonehaven, Ottawa, Canadá"
+},{
+  titulo:"Apprenez React intensément avec un professeur natif",
+  texto:"2 semaines. Un professeur rien que pour vous (12h/jour)",
+  boton1:"Professeur",
+  nombre:"Aimée Mathieu",
+  foto:"aimee.PNG",
+  boton2:"Emplacement",
+  direccion:"2700 Rue Jean-Perrin #190, Québec, Canadá"
+},{
+  idioma:0
+}]
 
 
 
 function App() {  
-  const smurfs:Object[] = [{name:'Gruñon',img:gruñonImg},{name:'Fortachon',img:fortachonImg}, {name:'Filosofo',img:filosofoImg}];
   
-  const [count, setCount] = useState(0);
-
-  const [smurfIndex, setSmurfIndex] = useState(0);
-
-  const refSmurf = useRef<any>(smurfs[0].name);  
-
-  const changeSmurf = () =>{    
-    setSmurfIndex((smurfIndex) => (Number(smurfIndex) +1) % smurfs.length);
-    refSmurf.current = smurfs[(Number(smurfIndex) +1) % smurfs.length].name;
-    {console.log(smurfs[refSmurf.current])}
-  }
-
   return (
     <>    
-      {console.log(`referencia es:`+refSmurf.current)}      
-        
-      <h1>Los Pitufos</h1>       
-      <div className='principalDiv'>  
-        <div ref={refSmurf} className='smurfDiv' onClick={changeSmurf}>          
-          <Smurf name={refSmurf.current} image={smurfs[smurfIndex].img} />
+      <DataContext>
+        <div className='languages'>
+          <Languages />
+          
         </div>
-      </div>
-      <div ref={refSmurf} className="referenceDiv">Hola</div> 
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      </DataContext>
     </>
   )
 }
