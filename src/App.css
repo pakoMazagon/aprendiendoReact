@@ -1,26 +1,183 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
 }
 
-.principalDiv {
+.titulo {
+  font-size: 1.8em;
+  text-align: center;
+  padding: 2px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #ff6f61, #ffcc33);
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  animation: glow 1.5s infinite alternate;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px #ff6f61;
+  }
+  to {
+    box-shadow: 0 0 20px #ffcc33;
+  }
+}
+
+
+.encabezado {
+  padding: 20px;
+  background-color: #007bff;
+  color: white;
   display: flex;
-  justify-content: space-evenly;
-  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
 }
 
-.smurfDiv {
-  background: linear-gradient(to top, #7ec850, #87ceeb);
-  border-radius: 12px;
-  margin: 20px;
-  width: 30%;
-  border: 1px solid black;
-  text-align: center;
-  padding: 12px;
+.encabezado input[type="text"] {
+  padding: 5px;
+  font-size: 14px;
+  margin-right: 10px;
+  border-radius: 10px;
 }
 
-img{
+.encabezado button {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.encabezado button:hover {
+  background-color: #218838;
+}
+
+.tablaProductos {
+  display: table;
   width: 100%;
+  table-layout: fixed; /* Fija los anchos de las columnas */
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/*li {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: table-row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8d7da; /* Rojo claro para no comprados 
+  transition: background-color 0.3s ease;
+}*/
+li {
+  padding: 10px;
+  margin: 5px 0px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  display: table-row; /* Cambia el diseño de fila a flexbox */
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8d7da; /* Rojo claro para no comprados */
+  transition: background-color 0.3s ease;
+}
+
+li > span:first-child {
+  padding: 10px;
+  display: table-cell;
+  width: 40%; /* Fija el ancho de la primera columna */
+  word-wrap: break-word; /* Permite saltos de línea */  
+  padding-right: 2px; /* Espaciado entre columnas */
+  vertical-align: middle; /* Alineación vertical */
+}
+/*li span:first-child {
+  flex: 1; /* Ocupa todo el espacio disponible 
+  word-wrap: break-word; /* Permite saltos de línea 
+  width: 40%;
+}*/
+
+li > span:nth-child(2) {
+  display: table-cell;
+  vertical-align: middle;
+  width: 15%;
+}
+
+li > button {
+  display: table-cell;
+  width: 22%; /* Ajusta según necesidad */
+  text-align: center;
+}
+
+li span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+li button {
+  margin-left: 5px;
+  padding: 10px 0px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  align-items: center; /* Alinea verticalmente */
+  justify-content: center; /* Alinea horizontalmente */
+  text-align: center; /* Asegura que el texto esté centrado */
+  white-space: nowrap; /* Evita que el texto se envuelva */
+  border-radius: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+li button:first-of-type {
+  background-color: #ffc107;
+  color: white;
+}
+
+li button:first-of-type:hover {
+  background-color: #e0a800;
+}
+
+li button:nth-of-type(2) {
+  background-color: #007bff;
+  color: white;
+}
+
+li button:nth-of-type(2):hover {
+  background-color: #0056b3;
+}
+
+li button:nth-of-type(3) {
+  background-color: #dc3545;
+  color: white;
+}
+
+li button:nth-of-type(3):hover {
+  background-color: #c82333;
+}
+
+li button:nth-of-type(4) {
+  background-color: #17a2b8;
+  color: white;
+}
+
+li button:nth-of-type(4):hover {
+  background-color: #138496;
+}
+
+li[style*="background-color: #d4edda"] {
+  /* Verde claro para comprados */
+  background-color: #d4edda !important;
 }
