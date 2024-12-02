@@ -12,13 +12,13 @@ const {VITE_BACKEND_URL} = import.meta.env;
 }*/
 
 interface ProductoDeLaLista {
-  id: number;
-  nombre: string;
-  unidades: number;
-  restButton: () => void;
-  sumButton: () => void;
-  quitButton: () => void;
-  comprado: boolean;
+  id?: number;
+  nombre?: string;
+  unidades?: number;
+  restButton?: () => void;
+  sumButton?: () => void;
+  quitButton?: () => void;
+  comprado?: boolean;
 }
 
 type Action =
@@ -139,7 +139,7 @@ function App() {
 
   // Acciones para los botones de la lista
   const handleAddProduct = () => {
-    const newProduct = { nombre: productoActual, unidades: 1, comprado: false };
+    const newProduct = { id:null, nombre: productoActual, unidades: 1, comprado: false, restButton: () => {}, sumButton: () => {}, quitButton: () => {}};
     dispatch({ type: "ADD_PRODUCT", payload: newProduct });
     sendUpdate("/app/addProductos", newProduct); // Enviar al backend
     setProductoActual(""); // Limpiar el campo de texto
