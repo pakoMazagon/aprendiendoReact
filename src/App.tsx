@@ -7,9 +7,9 @@ import "./App.css";
 const {VITE_BACKEND_URL} = import.meta.env;
 
 // Polyfill para global
-if (typeof global === "undefined") {
+/*if (typeof global === "undefined") {
   (window as any).global = window;
-}
+}*/
 
 interface ProductoDeLaLista {
   id: number;
