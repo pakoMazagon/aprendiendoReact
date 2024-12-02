@@ -146,12 +146,14 @@ function App() {
   };
 
   const handleRemoveProduct = (id: number) => {
-    dispatch({ type: "QUIT_PRODUCT", payload: { id } });
+    const quitProduct = { id:id, nombre: productoActual, unidades: 1, comprado: false, restButton: () => {}, sumButton: () => {}, quitButton: () => {}};
+    dispatch({ type: "QUIT_PRODUCT", payload: quitProduct });
     sendUpdate("/app/removeProductos", { id } as ProductoDeLaLista); // Enviar al backend
   };
 
   const handleToggleComprado = (id: number) => {
-    dispatch({ type: "TOGGLE_COMPRADO", payload: { id } });
+    const editProduct = { id:id, nombre: productoActual, unidades: 1, comprado: false, restButton: () => {}, sumButton: () => {}, quitButton: () => {}};
+    dispatch({ type: "TOGGLE_COMPRADO", payload: editProduct });
     let product = listaCompra.find((p) => p.id === id);
     if (product) {
       product.comprado = !product.comprado;
@@ -160,7 +162,8 @@ function App() {
   };
 
   const handleSum = (id: number) => {
-    dispatch({ type: "SUM_UNITS", payload: { id } });
+    const editProduct = { id:id, nombre: productoActual, unidades: 1, comprado: false, restButton: () => {}, sumButton: () => {}, quitButton: () => {}};
+    dispatch({ type: "SUM_UNITS", payload: editProduct });
     let product = listaCompra.find((p) => p.id === id);
     if (product) {
       product.unidades = product.unidades + 1;
@@ -169,7 +172,8 @@ function App() {
   };
 
   const handleRes = (id: number) => {
-    dispatch({ type: "REST_UNITS", payload: { id } });
+    const editProduct = { id:id, nombre: productoActual, unidades: 1, comprado: false, restButton: () => {}, sumButton: () => {}, quitButton: () => {}};
+    dispatch({ type: "REST_UNITS", payload: editProduct });
     let product = listaCompra.find((p) => p.id === id);
     if (product) {
       product.unidades = product.unidades - 1;
