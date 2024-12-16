@@ -96,7 +96,7 @@ li {
 }
 
 li > span:first-child {
-  padding: 10px;
+  padding: 5px;
   display: table-cell;
   width: 40%; /* Fija el ancho de la primera columna */
   word-wrap: break-word; /* Permite saltos de línea */  
