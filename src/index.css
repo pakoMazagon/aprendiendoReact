@@ -1,0 +1,75 @@
+nav{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 16px;
+}
+.active{
+    color:orangered
+}
+
+a{
+    color: white;
+    font-size: 0.8 em;
+    text-decoration: none;
+    padding: 30px;
+}
+
+body{
+    margin: 0;
+}
+
+.listaMesas{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+}
+
+.destinoMesa{
+    text-align: center;
+    border: 2px solid #d4d4d8;
+    border-radius: 10%;
+    margin: 2px;
+    box-sizing: border-box;
+}
+
+.nombreTradicional{
+    font-size: 1.5em;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin:0px 0px;
+}
+
+.nombreTradicional span{
+    font-size: 1em;
+}
+
+img{
+    width: 100%;
+    vertical-align: top;
+}
+
+.camarero {
+    margin: 5px 0 10px;    
+}
+
+.ocupada {
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid #34d399; /* Borde verde claro */
+    box-shadow: 0 0 6px #34d399, 0 0 12px #34d399; /* Brillo exterior */
+}
+
+.destinoMesa a {
+    background-color: green;
+    color: white;
+    padding: 2px 12px 4px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 3px;
+}
